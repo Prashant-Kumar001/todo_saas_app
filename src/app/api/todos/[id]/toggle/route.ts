@@ -1,62 +1,60 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/prisma";
 import { Action, TodoPriority, TodoStatus } from "@/types";
 
 export async function PUT(
-    req: Request,
-    { params }: { params: { id: string } }
+    req: NextRequest,
+    context: { params: Promise<{ id: string }> }
 ) {
     try {
         const { userId } = await auth();
+
         if (!userId)
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-        const param = await params;
-        const id = param.id
-
-
-
-        const { id: todoId, status, priority, action } = await req.json() as {
-            id: string;
-            status?: TodoStatus;
-            priority?: TodoPriority;
-            action: Action;
-        }
-
+        const { id } = await context.params;
 
         if (!id || !id.trim())
             return NextResponse.json({ error: "Id is required" }, { status: 400 });
 
-        if (action === 'PRIORITY') {
+        const { status, priority, action } = (await req.json()) as {
+            status?: TodoStatus;
+            priority?: TodoPriority;
+            action: Action;
+        };
+
+        if (action === "PRIORITY") {
             const todo = await prisma.todo.update({
-                where: { id: todoId, userId },
+                where: { id, userId },
                 data: {
                     priority: priority === "HIGH" ? "LOW" : "HIGH",
-                    updatedAt: new Date()
+                    updatedAt: new Date(),
                 },
             });
+
             return NextResponse.json(todo, { status: 200 });
-        } else if (action === 'STATUS') {
+        }
+
+        if (action === "STATUS") {
             const todo = await prisma.todo.update({
-                where: { id: todoId, userId },
+                where: { id, userId },
                 data: {
                     status: status === "PENDING" ? "DONE" : "PENDING",
                     completedAt: status === "PENDING" ? new Date() : null,
-                    updatedAt: new Date()
+                    updatedAt: new Date(),
                 },
             });
+
             return NextResponse.json(todo, { status: 200 });
-        } else {
-            return NextResponse.json({ error: "Invalid action" }, { status: 400 });
         }
 
-
-
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     } catch (err) {
         console.error(err);
+
         return NextResponse.json(
-            { error: "Failed to delete todo" },
+            { error: "Failed to update todo" },
             { status: 500 }
         );
     }
