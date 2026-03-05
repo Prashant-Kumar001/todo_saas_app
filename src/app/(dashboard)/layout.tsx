@@ -63,8 +63,10 @@ export default function DashboardLayout({
     try {
       setSyncing(true);
       const result = await userClient.syncUser();
+      
+      
 
-      if (result.success) {
+      if (result.success && result.data) {
         dispatch(setDashboardData(result.data));
         dispatch(setHas_db(true));
         dispatch(setError(""));

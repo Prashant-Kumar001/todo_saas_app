@@ -1,11 +1,10 @@
-import { ISubscription, ITodo, IUser } from "@/types";
+import {  ITodo, IUser } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 type DashboardState = {
     user: IUser | null;
     todos: ITodo[];
-    subscription: ISubscription | null;
     loading: boolean;
     error: string;
     Has_db: boolean;
@@ -14,7 +13,6 @@ type DashboardState = {
 const initialState: DashboardState = {
     user: null,
     todos: [],
-    subscription: null,
     loading: true,
     error: "",
     Has_db: false,
@@ -36,9 +34,7 @@ const dashboardSlice = createSlice({
             state.user = action.payload?.user;
             state.todos = action.payload?.todos;
         },
-        setSubscription: (state, action: PayloadAction<ISubscription>) => {
-            state.subscription = action.payload
-        },
+       
 
         addTodos: (state, action: PayloadAction<ITodo>) => {
             state.todos = [...state.todos, action.payload];
@@ -72,7 +68,6 @@ const dashboardSlice = createSlice({
 export const {
     setHas_db,
     setDashboardData,
-    setSubscription,
     clearDashboard,
     addTodos,
     deleteTodo,

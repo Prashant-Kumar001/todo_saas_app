@@ -37,7 +37,7 @@ const TodoItem = ({
         todo.priority,
         action,
       );
-      if (res.success) {
+      if (res.success && res.data) {
         dispatch(toggleTodos(res.data));
         toast.success(`Todo ${action.toLowerCase()} updated successfully`);
       } else {
@@ -62,7 +62,7 @@ const TodoItem = ({
 
     try {
       const res = await userClient.deleteTodo(todo.id);
-      if (res.success) {
+      if (res.success && res.data) {
         dispatch(deleteTodo(todo.id));
         toast.success("Todo deleted successfully");
       } else {

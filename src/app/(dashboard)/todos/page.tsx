@@ -50,7 +50,7 @@ const billing = user?.publicMetadata?.subscription;
       const res = await userClient.createTodo({
         title: newTodo.trim(),
       });
-      if (res.success) {
+      if (res.success && res.data) {
         dispatch(addTodos(res.data));
         setNewTodo("");
         toast.success("Todo added successfully");

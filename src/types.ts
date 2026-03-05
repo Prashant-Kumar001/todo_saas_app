@@ -42,3 +42,17 @@ export type StatusType = "ACTIVE" | "TRIALING" | "EXPIRED" | "CANCELED";
 
 
 export type Action = "STATUS" | "PRIORITY";
+
+
+export type resType = {
+    user: IUser;
+    todos: ITodo[];
+    status: boolean,
+    error: string
+    Has_db: boolean
+} 
+
+export type deleteTodo = {
+   message: string,
+   success: boolean
+};

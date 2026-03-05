@@ -1,4 +1,4 @@
-import { ISubscription } from "@/types";
+import {  deleteTodo, ITodo, resType } from "@/types";
 
 export interface ApiResponse<T> {
     success: boolean;
@@ -40,30 +40,28 @@ class UserClient {
     }
 
 
-    async syncUser(): Promise<ApiResponse<any>> {
+    async syncUser(): Promise<ApiResponse<resType>> {
         return this.request("/user/sync", {
             method: "POST",
             body: JSON.stringify({}),
         });
     }
 
-    async me(): Promise<ApiResponse<any>> {
+    async me(): Promise<ApiResponse<resType>> {
         return this.request("/user/me", { method: "GET" });
     }
 
 
-    async createTodo(todo: TodoPayload): Promise<ApiResponse<any>> {
+    async createTodo(todo: TodoPayload): Promise<ApiResponse<ITodo>> {
         return this.request("/todos/create", {
             method: "POST",
             body: JSON.stringify(todo),
         });
     }
 
-    async getTodos(): Promise<ApiResponse<any>> {
-        return this.request("/todos", { method: "GET" });
-    }
 
-    async deleteTodo(id: string): Promise<ApiResponse<any>> {
+
+    async deleteTodo(id: string): Promise<ApiResponse<deleteTodo>> {
         return this.request(`/todos/${id}/delete`, {
             method: "DELETE",
             body: JSON.stringify({ id }),
@@ -75,31 +73,18 @@ class UserClient {
         status?: string,
         priority?: string,
         action: string = "toggle"
-    ): Promise<ApiResponse<any>> {
+    ): Promise<ApiResponse<ITodo>> {
         return this.request(`/todos/${id}/toggle`, {
             method: "PUT",
             body: JSON.stringify({ id, status, priority, action }),
         });
     }
 
-    async getSubscriptions(): Promise<ApiResponse<ISubscription[]>> {
-        return this.request("/subscriptions", { method: "GET" });
-    }
-
-    async upgradePlan(plan: string): Promise<ApiResponse<ISubscription>> {
-        return this.request("/subscriptions/upgrade", {
-            method: "POST",
-            body: JSON.stringify({ plan }),
-        });
-    }
+    
+   
 
 
-    async cancelPlan(): Promise<ApiResponse<any>> {
-        return this.request("/subscriptions/cancel", {
-            method: "POST",
-            body: JSON.stringify({}),
-        });
-    }
+  
 }
 
 

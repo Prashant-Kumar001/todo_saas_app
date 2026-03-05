@@ -26,7 +26,6 @@ export async function GET() {
             );
         }
 
-        // const Subscription = await normalizeSubscription(userId);
 
 
         const Todos = await prisma.todo.findMany({
@@ -37,6 +36,9 @@ export async function GET() {
         return NextResponse.json({
             user: User,
             todos: Todos || [],
+            status: true,
+            error: "",
+            Has_db: true,
         });
     } catch (error) {
         const err = error as Error;

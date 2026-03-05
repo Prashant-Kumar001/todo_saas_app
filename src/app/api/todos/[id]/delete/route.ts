@@ -20,7 +20,7 @@ export async function DELETE(
         if (todo.count === 0)
             return NextResponse.json({ error: "Todo not found" }, { status: 404 });
 
-        return NextResponse.json({ message: "Todo deleted" }, { status: 200 });
+        return NextResponse.json({ message: "Todo deleted", success: true }, { status: 200 });
     } catch (err) {
         console.error(err);
         return NextResponse.json(
