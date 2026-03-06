@@ -1,17 +1,4 @@
-export interface ISubscription {
-    id: string;
-    userId: string;
 
-    plan: PlanType;
-    status: StatusType;
-
-    trialEndsAt?: Date | null;
-    endDate?: Date | null;
-    cancelAt?: Date | null;
-
-    createdAt: Date;
-    updatedAt: Date;
-};
 
 export interface IUser {
     name: string;
