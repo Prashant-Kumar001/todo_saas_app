@@ -35,9 +35,11 @@ export default async function AdminFeedbackPage() {
             </div>
 
             <div className="flex gap-3">
-              {!f.approved && <ApproveButton id={f.id} />}
-
-              {f.approved && <span className="text-green-600">Approved</span>}
+              {!f.approved ? (
+                <ApproveButton id={f.id} initialFlag={"REJECT"} />
+              ) : (
+                <ApproveButton id={f.id} initialFlag={"APPROVE"} />
+              )}
             </div>
           </div>
         ))}
