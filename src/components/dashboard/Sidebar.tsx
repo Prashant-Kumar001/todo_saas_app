@@ -15,7 +15,7 @@ export default function Sidebar({ pathname }: { pathname: string }) {
 
   return (
     <>
-      <div className="md:hidden fixed top-4 left-4 z-50">
+      <div className="md:hidden fixed top-2 left-4 z-50">
         <button
           onClick={() => setOpen(true)}
           className="p-2 rounded-md border bg-white shadow-sm"
