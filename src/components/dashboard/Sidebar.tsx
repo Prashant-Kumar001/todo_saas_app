@@ -15,7 +15,7 @@ const Sidebar = ({ pathname }: { pathname: string }) => {
 
   return (
     <>
-      <div className="md:hidden fixed top-1 left-0 z-50 px-4 py-3  bg-white">
+      <div className="md:hidden fixed top-[5.5px] left-0 z-50 px-4 py-3  ">
         <button onClick={() => setOpen(true)}>
           <Menu size={22} />
         </button>
@@ -29,7 +29,7 @@ const Sidebar = ({ pathname }: { pathname: string }) => {
       )}
 
       <aside
-        className={`fixed md:sticky top-0 left-0 z-50 h-full w-64   transform transition-transform duration-300
+        className={`fixed bg-white  md:sticky top-0 left-0 z-50 h-full w-64   transform transition-transform duration-300
         ${open ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
       >
         <div className="px-5 py-4  flex items-center justify-between">
@@ -59,7 +59,7 @@ const Sidebar = ({ pathname }: { pathname: string }) => {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setOpen(false)} 
+                onClick={() => setOpen(false)}
               >
                 <Button
                   variant={active ? "default" : "ghost"}

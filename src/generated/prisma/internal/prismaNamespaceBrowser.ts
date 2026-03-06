@@ -53,7 +53,7 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   User: 'User',
   Todo: 'Todo',
-  Subscription: 'Subscription'
+  Feedback: 'Feedback'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -98,19 +98,17 @@ export const TodoScalarFieldEnum = {
 export type TodoScalarFieldEnum = (typeof TodoScalarFieldEnum)[keyof typeof TodoScalarFieldEnum]
 
 
-export const SubscriptionScalarFieldEnum = {
+export const FeedbackScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  plan: 'plan',
-  status: 'status',
-  trialEndsAt: 'trialEndsAt',
-  endDate: 'endDate',
-  cancelAt: 'cancelAt',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  email: 'email',
+  message: 'message',
+  rating: 'rating',
+  approved: 'approved',
+  createdAt: 'createdAt'
 } as const
 
-export type SubscriptionScalarFieldEnum = (typeof SubscriptionScalarFieldEnum)[keyof typeof SubscriptionScalarFieldEnum]
+export type FeedbackScalarFieldEnum = (typeof FeedbackScalarFieldEnum)[keyof typeof FeedbackScalarFieldEnum]
 
 
 export const SortOrder = {

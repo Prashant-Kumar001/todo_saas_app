@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { ArrowRight, Star } from "lucide-react";
+import Link from "next/link";
 
 const Hero = ({ handleSignUp, isSignedIn }: { handleSignUp: () => void, isSignedIn: boolean | null | undefined }) => {
   return (
@@ -44,8 +45,10 @@ const Hero = ({ handleSignUp, isSignedIn }: { handleSignUp: () => void, isSigned
             <Star className="w-4 h-4 text-gray-700" />
             <span>4.9/5 rating</span>
           </div>
-          <div>Trusted by 50K+ users</div>
-          <div>99.9% uptime</div>
+          <p>Trusted by 50K+ users</p>
+          <p>99.9% uptime</p>
+          <Link href={'/pricing'}>
+            <p>Pricing</p></Link>
         </div>
       </div>
     </section>

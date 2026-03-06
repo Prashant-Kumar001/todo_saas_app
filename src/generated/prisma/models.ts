@@ -10,5 +10,5 @@
  */
 export type * from './models/User'
 export type * from './models/Todo'
-export type * from './models/Subscription'
+export type * from './models/Feedback'
 export type * from './commonInputTypes'

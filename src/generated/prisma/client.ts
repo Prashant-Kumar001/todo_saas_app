@@ -52,7 +52,7 @@ export type User = Prisma.UserModel
  */
 export type Todo = Prisma.TodoModel
 /**
- * Model Subscription
+ * Model Feedback
  * 
  */
-export type Subscription = Prisma.SubscriptionModel
+export type Feedback = Prisma.FeedbackModel

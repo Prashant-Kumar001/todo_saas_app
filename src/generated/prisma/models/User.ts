@@ -183,7 +183,7 @@ export type UserWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   todos?: Prisma.TodoListRelationFilter
-  subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
+  feedbacks?: Prisma.FeedbackListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -193,7 +193,7 @@ export type UserOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   todos?: Prisma.TodoOrderByRelationAggregateInput
-  subscription?: Prisma.SubscriptionOrderByWithRelationInput
+  feedbacks?: Prisma.FeedbackOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -206,7 +206,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   todos?: Prisma.TodoListRelationFilter
-  subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
+  feedbacks?: Prisma.FeedbackListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -238,7 +238,7 @@ export type UserCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   todos?: Prisma.TodoCreateNestedManyWithoutUserInput
-  subscription?: Prisma.SubscriptionCreateNestedOneWithoutUserInput
+  feedbacks?: Prisma.FeedbackCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -248,7 +248,7 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   todos?: Prisma.TodoUncheckedCreateNestedManyWithoutUserInput
-  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutUserInput
+  feedbacks?: Prisma.FeedbackUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -258,7 +258,7 @@ export type UserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   todos?: Prisma.TodoUpdateManyWithoutUserNestedInput
-  subscription?: Prisma.SubscriptionUpdateOneWithoutUserNestedInput
+  feedbacks?: Prisma.FeedbackUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -268,7 +268,7 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   todos?: Prisma.TodoUncheckedUpdateManyWithoutUserNestedInput
-  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+  feedbacks?: Prisma.FeedbackUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -350,18 +350,18 @@ export type UserUpdateOneRequiredWithoutTodosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTodosInput, Prisma.UserUpdateWithoutTodosInput>, Prisma.UserUncheckedUpdateWithoutTodosInput>
 }
 
-export type UserCreateNestedOneWithoutSubscriptionInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSubscriptionInput, Prisma.UserUncheckedCreateWithoutSubscriptionInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSubscriptionInput
+export type UserCreateNestedOneWithoutFeedbacksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFeedbacksInput, Prisma.UserUncheckedCreateWithoutFeedbacksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFeedbacksInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutSubscriptionNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSubscriptionInput, Prisma.UserUncheckedCreateWithoutSubscriptionInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSubscriptionInput
-  upsert?: Prisma.UserUpsertWithoutSubscriptionInput
+export type UserUpdateOneRequiredWithoutFeedbacksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFeedbacksInput, Prisma.UserUncheckedCreateWithoutFeedbacksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFeedbacksInput
+  upsert?: Prisma.UserUpsertWithoutFeedbacksInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSubscriptionInput, Prisma.UserUpdateWithoutSubscriptionInput>, Prisma.UserUncheckedUpdateWithoutSubscriptionInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFeedbacksInput, Prisma.UserUpdateWithoutFeedbacksInput>, Prisma.UserUncheckedUpdateWithoutFeedbacksInput>
 }
 
 export type UserCreateWithoutTodosInput = {
@@ -370,7 +370,7 @@ export type UserCreateWithoutTodosInput = {
   name?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  subscription?: Prisma.SubscriptionCreateNestedOneWithoutUserInput
+  feedbacks?: Prisma.FeedbackCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTodosInput = {
@@ -379,7 +379,7 @@ export type UserUncheckedCreateWithoutTodosInput = {
   name?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutUserInput
+  feedbacks?: Prisma.FeedbackUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTodosInput = {
@@ -404,7 +404,7 @@ export type UserUpdateWithoutTodosInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  subscription?: Prisma.SubscriptionUpdateOneWithoutUserNestedInput
+  feedbacks?: Prisma.FeedbackUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTodosInput = {
@@ -413,10 +413,10 @@ export type UserUncheckedUpdateWithoutTodosInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutUserNestedInput
+  feedbacks?: Prisma.FeedbackUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutSubscriptionInput = {
+export type UserCreateWithoutFeedbacksInput = {
   id?: string
   email: string
   name?: string | null
@@ -425,7 +425,7 @@ export type UserCreateWithoutSubscriptionInput = {
   todos?: Prisma.TodoCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutSubscriptionInput = {
+export type UserUncheckedCreateWithoutFeedbacksInput = {
   id?: string
   email: string
   name?: string | null
@@ -434,23 +434,23 @@ export type UserUncheckedCreateWithoutSubscriptionInput = {
   todos?: Prisma.TodoUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutSubscriptionInput = {
+export type UserCreateOrConnectWithoutFeedbacksInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutSubscriptionInput, Prisma.UserUncheckedCreateWithoutSubscriptionInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFeedbacksInput, Prisma.UserUncheckedCreateWithoutFeedbacksInput>
 }
 
-export type UserUpsertWithoutSubscriptionInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutSubscriptionInput, Prisma.UserUncheckedUpdateWithoutSubscriptionInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutSubscriptionInput, Prisma.UserUncheckedCreateWithoutSubscriptionInput>
+export type UserUpsertWithoutFeedbacksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFeedbacksInput, Prisma.UserUncheckedUpdateWithoutFeedbacksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFeedbacksInput, Prisma.UserUncheckedCreateWithoutFeedbacksInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutSubscriptionInput = {
+export type UserUpdateToOneWithWhereWithoutFeedbacksInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutSubscriptionInput, Prisma.UserUncheckedUpdateWithoutSubscriptionInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFeedbacksInput, Prisma.UserUncheckedUpdateWithoutFeedbacksInput>
 }
 
-export type UserUpdateWithoutSubscriptionInput = {
+export type UserUpdateWithoutFeedbacksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -459,7 +459,7 @@ export type UserUpdateWithoutSubscriptionInput = {
   todos?: Prisma.TodoUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutSubscriptionInput = {
+export type UserUncheckedUpdateWithoutFeedbacksInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -475,10 +475,12 @@ export type UserUncheckedUpdateWithoutSubscriptionInput = {
 
 export type UserCountOutputType = {
   todos: number
+  feedbacks: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   todos?: boolean | UserCountOutputTypeCountTodosArgs
+  feedbacks?: boolean | UserCountOutputTypeCountFeedbacksArgs
 }
 
 /**
@@ -498,6 +500,13 @@ export type UserCountOutputTypeCountTodosArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.TodoWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFeedbacksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FeedbackWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -506,7 +515,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   todos?: boolean | Prisma.User$todosArgs<ExtArgs>
-  subscription?: boolean | Prisma.User$subscriptionArgs<ExtArgs>
+  feedbacks?: boolean | Prisma.User$feedbacksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -537,7 +546,7 @@ export type UserSelectScalar = {
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   todos?: boolean | Prisma.User$todosArgs<ExtArgs>
-  subscription?: boolean | Prisma.User$subscriptionArgs<ExtArgs>
+  feedbacks?: boolean | Prisma.User$feedbacksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -547,7 +556,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     todos: Prisma.$TodoPayload<ExtArgs>[]
-    subscription: Prisma.$SubscriptionPayload<ExtArgs> | null
+    feedbacks: Prisma.$FeedbackPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -950,7 +959,7 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   todos<T extends Prisma.User$todosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$todosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TodoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  subscription<T extends Prisma.User$subscriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$subscriptionArgs<ExtArgs>>): Prisma.Prisma__SubscriptionClient<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  feedbacks<T extends Prisma.User$feedbacksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$feedbacksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FeedbackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1397,22 +1406,27 @@ export type User$todosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
 }
 
 /**
- * User.subscription
+ * User.feedbacks
  */
-export type User$subscriptionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$feedbacksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Subscription
+   * Select specific fields to fetch from the Feedback
    */
-  select?: Prisma.SubscriptionSelect<ExtArgs> | null
+  select?: Prisma.FeedbackSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Subscription
+   * Omit specific fields from the Feedback
    */
-  omit?: Prisma.SubscriptionOmit<ExtArgs> | null
+  omit?: Prisma.FeedbackOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SubscriptionInclude<ExtArgs> | null
-  where?: Prisma.SubscriptionWhereInput
+  include?: Prisma.FeedbackInclude<ExtArgs> | null
+  where?: Prisma.FeedbackWhereInput
+  orderBy?: Prisma.FeedbackOrderByWithRelationInput | Prisma.FeedbackOrderByWithRelationInput[]
+  cursor?: Prisma.FeedbackWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FeedbackScalarFieldEnum | Prisma.FeedbackScalarFieldEnum[]
 }
 
 /**

@@ -38,7 +38,6 @@ export default function DashboardLayout({
       const result = await userClient.me();
       if (result.success && result.data) {
         dispatch(setHas_db(true));
-        console.log(result.data);
         dispatch(setDashboardData(result.data));
       } else {
         dispatch(setHas_db(false));

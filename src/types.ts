@@ -33,6 +33,14 @@ export interface ITodo {
     updatedAt: Date;
 }
 
+export interface IFeedback {
+    id: string;
+    userId?: string;
+    message: string;
+    rating?: number | null;
+    createdAt: Date;
+}
+
 export type TodoStatus = "DONE" | "PENDING";
 export type TodoPriority = "LOW" | "HIGH";
 
@@ -50,9 +58,9 @@ export type resType = {
     status: boolean,
     error: string
     Has_db: boolean
-} 
+}
 
 export type deleteTodo = {
-   message: string,
-   success: boolean
+    message: string,
+    success: boolean
 };

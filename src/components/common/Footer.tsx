@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -7,24 +8,25 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center space-x-2">
-            <CheckCircle2 className="w-6 h-6 text-gray-800" />
+            <CheckCircle2 />
             <span className="text-lg font-semibold text-gray-900">
               TaskFlow
             </span>
           </div>
           <div className="flex space-x-6 text-sm text-gray-600">
-            <a href="#" className="hover:text-gray-900 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-gray-900 transition-colors">
-              Terms
-            </a>
-            <a href="#" className="hover:text-gray-900 transition-colors">
-              Support
-            </a>
-            <a href="#" className="hover:text-gray-900 transition-colors">
-              Contact
-            </a>
+           
+            <Link
+              href="/testimonials"
+              className="hover:text-gray-900 transition-colors"
+            >
+              Testimonials
+            </Link>
+            <Link
+              href="/feedback"
+              className="hover:text-gray-900 transition-colors"
+            >
+              Feedback
+            </Link>
           </div>
         </div>
 

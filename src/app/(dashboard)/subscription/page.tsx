@@ -104,7 +104,11 @@ export default function OverviewPage() {
             Manage or update your subscription
           </p>
 
-          <SubscriptionDetailsButton />
+          <SubscriptionDetailsButton>
+            <button className="text-sm font-medium text-slate-900 hover:text-slate-700">
+              Manage Subscription
+            </button>
+          </SubscriptionDetailsButton>
         </div>
       </div>
     </div>

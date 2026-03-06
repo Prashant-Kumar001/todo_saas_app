@@ -1,4 +1,4 @@
-import {  deleteTodo, ITodo, resType } from "@/types";
+import { deleteTodo, IFeedback, ITodo, resType } from "@/types";
 
 export interface ApiResponse<T> {
     success: boolean;
@@ -80,11 +80,20 @@ class UserClient {
         });
     }
 
-    
-   
+    async getTestimonial(
+        limit: number
+    ): Promise<ApiResponse<IFeedback[]>> {
+        return this.request(`/testimonials?limit=${limit}`, {
+            method: "GET",
+        });
+    }
 
 
-  
+
+
+
+
+
 }
 
 

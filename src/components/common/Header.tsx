@@ -19,7 +19,7 @@ const Header = ({
   handleDashboard,
 }: Props) => {
   return (
-    <nav className="border-b bg-white sticky top-0 z-50">
+    <nav className="border-b bg-white sticky top-0 ">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center space-x-2">
@@ -38,7 +38,7 @@ const Header = ({
                   Dashboard
                 </Button>
 
-                <Button onClick={handleSignOut} variant="outline">
+                <Button className="hidden md:block" onClick={handleSignOut} variant="outline">
                   Log Out
                 </Button>
               </>

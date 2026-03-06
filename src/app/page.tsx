@@ -7,6 +7,8 @@ import Features from "@/components/home/Features";
 import Hero from "@/components/home/Hero";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
+import Testimonial from "@/components/home/Testimonial";
+import Pricing from "@/components/home/pricing";
 
 const HomePage = () => {
   const { isSignedIn } = useUser();
@@ -30,8 +32,10 @@ const HomePage = () => {
 
       <main>
         <Hero isSignedIn={isSignedIn} handleSignUp={handleSignUp} />
+        <Testimonial/>
         <Features />
-        <CTA handleSignUp={handleSignUp} />
+        <Pricing />
+        <CTA  />
       </main>
 
       <Footer />

@@ -1,40 +1,36 @@
-import React from "react";
-import { Card, CardContent } from "../ui/card";
-import { Button } from "../ui/button";
-import { ArrowRight } from "lucide-react";
+"use client";
 
-const CTA = ({ handleSignUp }: { handleSignUp: () => void }) => {
+import { useUser } from "@clerk/nextjs";
+import Link from "next/link";
+
+export default function CTA() {
+  const { isSignedIn } = useUser();
+
   return (
-    <section className="py-24 px-6 bg-white">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6">
-          Ready to get more done?
-        </h2>
+    <section className="py-24 px-6  border-b">
+      <h2 className="text-4xl font-bold mb-4">
+        Stay organized. Get more done.
+      </h2>
 
-        <p className="text-lg text-gray-600 mb-12">
-          Join teams and individuals who rely on TaskFlow to stay organized and
-          productive every day.
-        </p>
+      <p className="text-muted-foreground mb-8">
+        Manage your tasks with our powerful Todo SaaS.
+      </p>
 
-        <Card className="border border-gray-200 shadow-none">
-          <CardContent className="p-10">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="text-center md:text-left">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Start your free trial
-                </h3>
-                <p className="text-sm text-gray-600">
-                  No credit card required · 7-day free trial · Cancel anytime
-                </p>
-              </div>
-
-             
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      {isSignedIn ? (
+        <Link
+          href="/dashboard"
+          className="px-6 py-3 rounded-lg bg-black text-white"
+        >
+          Go to Dashboard
+        </Link>
+      ) : (
+        <Link
+          href="/sign-up"
+          className="px-6 py-3 rounded-lg bg-black text-white"
+        >
+          Get Started Free
+        </Link>
+      )}
     </section>
   );
-};
-
-export default CTA;
+}
