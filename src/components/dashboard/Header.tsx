@@ -26,7 +26,7 @@ const Header = ({
   loading,
 }: HeaderProps) => {
   return (
-    <header className="bg-white sticky top-0 z-20 ">
+    <header className="bg-white sticky top-0  ">
       <div className="flex h-14 items-center justify-between px-4 md:px-6">
         <h1 className="pl-10 md:pl-1 text-sm font-semibold text-slate-700 md:text-base">
           {nav.find((n) => n.href === pathname)?.label ?? "Overview"}
